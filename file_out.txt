@@ -1,0 +1,16 @@
+mov t, 0.0
+lbl1
+cmp t, 2.0
+jge lbl2
+cmp t, 2.0
+jne lbl3
+output t
+add t, 1.0
+mov t, 1.0
+lbl3
+cmp t, 0.0
+jl lbl4
+mov y, 5.0
+lbl4
+halghe lbl1
+lbl2

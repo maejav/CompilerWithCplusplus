@@ -1,0 +1,2 @@
+t=0
+while t<2:{if t==2:{print(t) t=t+1} elif t>=0: { y=5 } }

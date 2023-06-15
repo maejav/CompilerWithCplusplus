@@ -1,0 +1,1394 @@
+Created by PLY version 3.8 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    RETURN
+    CAMA
+    ELSE
+    DOUBLECOT
+    newline
+    DEF
+
+Grammar
+
+Rule 0     S' -> S
+Rule 1     S -> IFY S
+Rule 2     S -> IFY
+Rule 3     S -> WHILEY
+Rule 4     S -> WHILEY S
+Rule 5     S -> ASSIGN S
+Rule 6     S -> ASSIGN
+Rule 7     S -> PRINTY
+Rule 8     S -> PRINTY S
+Rule 9     IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+Rule 10    TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+Rule 11    TF1 -> <empty>
+Rule 12    XELIF -> <empty>
+Rule 13    Xif -> <empty>
+Rule 14    S1 -> IFY S1
+Rule 15    S1 -> IFY
+Rule 16    S1 -> WHILEY S1
+Rule 17    S1 -> WHILEY
+Rule 18    S1 -> ASSIGN S1
+Rule 19    S1 -> ASSIGN
+Rule 20    S1 -> PRINTY S1
+Rule 21    S1 -> PRINTY
+Rule 22    PRINTY -> PRINT LP STR RP
+Rule 23    PRINTY -> PRINT LP ID RP
+Rule 24    PRINTY -> PRINT LP NUM RP
+Rule 25    PRINTY -> PRINT LP RP
+Rule 26    INPUTY -> INPUT LP STR RP
+Rule 27    INPUTY -> INPUT LP RP
+Rule 28    WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+Rule 29    XWhile -> <empty>
+Rule 30    VAR -> ID
+Rule 31    VAR -> NUM
+Rule 32    ASSIGN2 -> E
+Rule 33    ASSIGN -> ID EN E
+Rule 34    ASSIGN2 -> INPUTY
+Rule 35    CONDITION -> ID EQUAL VAR
+Rule 36    CONDITION -> VAR B VAR
+Rule 37    CONDITION -> VAR K VAR
+Rule 38    CONDITION -> VAR KE VAR
+Rule 39    CONDITION -> VAR BE VAR
+Rule 40    CONDITION -> VAR NOTEQUAL VAR
+Rule 41    CONDITION -> INPUTY
+Rule 42    E -> E PLUS T
+Rule 43    E -> E MINUS T
+Rule 44    E -> T
+Rule 45    T -> T MUL F
+Rule 46    T -> T DIV F
+Rule 47    T -> F
+Rule 48    F -> VAR
+Rule 49    F -> LP E RP
+
+Terminals, with rules where they appear
+
+B                    : 36
+BE                   : 39
+CAMA                 : 
+DEF                  : 
+DIV                  : 46
+DONOGHTEH            : 9 10 28
+DOUBLECOT            : 
+ELIF                 : 10
+ELSE                 : 
+EN                   : 33
+EQUAL                : 35
+ID                   : 23 30 33 35
+IF                   : 9
+INPUT                : 26 27
+K                    : 37
+KE                   : 38
+LBRAC                : 9 10 28
+LP                   : 22 23 24 25 26 27 49
+MINUS                : 43
+MUL                  : 45
+NOTEQUAL             : 40
+NUM                  : 24 31
+PLUS                 : 42
+PRINT                : 22 23 24 25
+RBRAC                : 9 10 28
+RETURN               : 
+RP                   : 22 23 24 25 26 27 49
+STR                  : 22 26
+WHILE                : 28
+error                : 
+newline              : 
+
+Nonterminals, with rules where they appear
+
+ASSIGN               : 5 6 18 19
+ASSIGN2              : 
+CONDITION            : 9 10 28
+E                    : 32 33 42 43 49
+F                    : 45 46 47
+IFY                  : 1 2 14 15
+INPUTY               : 34 41
+PRINTY               : 7 8 20 21
+S                    : 1 4 5 8 0
+S1                   : 9 10 14 16 18 20 28
+T                    : 42 43 44 45 46
+TF1                  : 9 10
+VAR                  : 35 36 36 37 37 38 38 39 39 40 40 48
+WHILEY               : 3 4 16 17
+XELIF                : 10
+XWhile               : 28
+Xif                  : 9
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . S
+    (1) S -> . IFY S
+    (2) S -> . IFY
+    (3) S -> . WHILEY
+    (4) S -> . WHILEY S
+    (5) S -> . ASSIGN S
+    (6) S -> . ASSIGN
+    (7) S -> . PRINTY
+    (8) S -> . PRINTY S
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 5
+    IFY                            shift and go to state 2
+    S                              shift and go to state 8
+    PRINTY                         shift and go to state 9
+    ASSIGN                         shift and go to state 7
+
+state 1
+
+    (28) WHILEY -> WHILE . XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (29) XWhile -> .
+
+    ID              reduce using rule 29 (XWhile -> .)
+    NUM             reduce using rule 29 (XWhile -> .)
+    INPUT           reduce using rule 29 (XWhile -> .)
+
+    XWhile                         shift and go to state 10
+
+state 2
+
+    (1) S -> IFY . S
+    (2) S -> IFY .
+    (1) S -> . IFY S
+    (2) S -> . IFY
+    (3) S -> . WHILEY
+    (4) S -> . WHILEY S
+    (5) S -> . ASSIGN S
+    (6) S -> . ASSIGN
+    (7) S -> . PRINTY
+    (8) S -> . PRINTY S
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    $end            reduce using rule 2 (S -> IFY .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 5
+    IFY                            shift and go to state 2
+    S                              shift and go to state 11
+    PRINTY                         shift and go to state 9
+    ASSIGN                         shift and go to state 7
+
+state 3
+
+    (22) PRINTY -> PRINT . LP STR RP
+    (23) PRINTY -> PRINT . LP ID RP
+    (24) PRINTY -> PRINT . LP NUM RP
+    (25) PRINTY -> PRINT . LP RP
+
+    LP              shift and go to state 12
+
+
+state 4
+
+    (33) ASSIGN -> ID . EN E
+
+    EN              shift and go to state 13
+
+
+state 5
+
+    (3) S -> WHILEY .
+    (4) S -> WHILEY . S
+    (1) S -> . IFY S
+    (2) S -> . IFY
+    (3) S -> . WHILEY
+    (4) S -> . WHILEY S
+    (5) S -> . ASSIGN S
+    (6) S -> . ASSIGN
+    (7) S -> . PRINTY
+    (8) S -> . PRINTY S
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    $end            reduce using rule 3 (S -> WHILEY .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 5
+    IFY                            shift and go to state 2
+    S                              shift and go to state 14
+    PRINTY                         shift and go to state 9
+    ASSIGN                         shift and go to state 7
+
+state 6
+
+    (9) IFY -> IF . Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (13) Xif -> .
+
+    ID              reduce using rule 13 (Xif -> .)
+    NUM             reduce using rule 13 (Xif -> .)
+    INPUT           reduce using rule 13 (Xif -> .)
+
+    Xif                            shift and go to state 15
+
+state 7
+
+    (5) S -> ASSIGN . S
+    (6) S -> ASSIGN .
+    (1) S -> . IFY S
+    (2) S -> . IFY
+    (3) S -> . WHILEY
+    (4) S -> . WHILEY S
+    (5) S -> . ASSIGN S
+    (6) S -> . ASSIGN
+    (7) S -> . PRINTY
+    (8) S -> . PRINTY S
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    $end            reduce using rule 6 (S -> ASSIGN .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 5
+    IFY                            shift and go to state 2
+    S                              shift and go to state 16
+    PRINTY                         shift and go to state 9
+    ASSIGN                         shift and go to state 7
+
+state 8
+
+    (0) S' -> S .
+
+
+
+state 9
+
+    (7) S -> PRINTY .
+    (8) S -> PRINTY . S
+    (1) S -> . IFY S
+    (2) S -> . IFY
+    (3) S -> . WHILEY
+    (4) S -> . WHILEY S
+    (5) S -> . ASSIGN S
+    (6) S -> . ASSIGN
+    (7) S -> . PRINTY
+    (8) S -> . PRINTY S
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    $end            reduce using rule 7 (S -> PRINTY .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 5
+    IFY                            shift and go to state 2
+    S                              shift and go to state 17
+    PRINTY                         shift and go to state 9
+    ASSIGN                         shift and go to state 7
+
+state 10
+
+    (28) WHILEY -> WHILE XWhile . CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (35) CONDITION -> . ID EQUAL VAR
+    (36) CONDITION -> . VAR B VAR
+    (37) CONDITION -> . VAR K VAR
+    (38) CONDITION -> . VAR KE VAR
+    (39) CONDITION -> . VAR BE VAR
+    (40) CONDITION -> . VAR NOTEQUAL VAR
+    (41) CONDITION -> . INPUTY
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+    (26) INPUTY -> . INPUT LP STR RP
+    (27) INPUTY -> . INPUT LP RP
+
+    ID              shift and go to state 23
+    NUM             shift and go to state 22
+    INPUT           shift and go to state 20
+
+    CONDITION                      shift and go to state 18
+    INPUTY                         shift and go to state 21
+    VAR                            shift and go to state 19
+
+state 11
+
+    (1) S -> IFY S .
+
+    $end            reduce using rule 1 (S -> IFY S .)
+
+
+state 12
+
+    (22) PRINTY -> PRINT LP . STR RP
+    (23) PRINTY -> PRINT LP . ID RP
+    (24) PRINTY -> PRINT LP . NUM RP
+    (25) PRINTY -> PRINT LP . RP
+
+    STR             shift and go to state 25
+    ID              shift and go to state 27
+    NUM             shift and go to state 26
+    RP              shift and go to state 24
+
+
+state 13
+
+    (33) ASSIGN -> ID EN . E
+    (42) E -> . E PLUS T
+    (43) E -> . E MINUS T
+    (44) E -> . T
+    (45) T -> . T MUL F
+    (46) T -> . T DIV F
+    (47) T -> . F
+    (48) F -> . VAR
+    (49) F -> . LP E RP
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    LP              shift and go to state 28
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    F                              shift and go to state 31
+    E                              shift and go to state 30
+    VAR                            shift and go to state 29
+    T                              shift and go to state 32
+
+state 14
+
+    (4) S -> WHILEY S .
+
+    $end            reduce using rule 4 (S -> WHILEY S .)
+
+
+state 15
+
+    (9) IFY -> IF Xif . CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (35) CONDITION -> . ID EQUAL VAR
+    (36) CONDITION -> . VAR B VAR
+    (37) CONDITION -> . VAR K VAR
+    (38) CONDITION -> . VAR KE VAR
+    (39) CONDITION -> . VAR BE VAR
+    (40) CONDITION -> . VAR NOTEQUAL VAR
+    (41) CONDITION -> . INPUTY
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+    (26) INPUTY -> . INPUT LP STR RP
+    (27) INPUTY -> . INPUT LP RP
+
+    ID              shift and go to state 23
+    NUM             shift and go to state 22
+    INPUT           shift and go to state 20
+
+    CONDITION                      shift and go to state 34
+    INPUTY                         shift and go to state 21
+    VAR                            shift and go to state 19
+
+state 16
+
+    (5) S -> ASSIGN S .
+
+    $end            reduce using rule 5 (S -> ASSIGN S .)
+
+
+state 17
+
+    (8) S -> PRINTY S .
+
+    $end            reduce using rule 8 (S -> PRINTY S .)
+
+
+state 18
+
+    (28) WHILEY -> WHILE XWhile CONDITION . DONOGHTEH LBRAC S1 RBRAC
+
+    DONOGHTEH       shift and go to state 35
+
+
+state 19
+
+    (36) CONDITION -> VAR . B VAR
+    (37) CONDITION -> VAR . K VAR
+    (38) CONDITION -> VAR . KE VAR
+    (39) CONDITION -> VAR . BE VAR
+    (40) CONDITION -> VAR . NOTEQUAL VAR
+
+    B               shift and go to state 39
+    K               shift and go to state 36
+    KE              shift and go to state 38
+    BE              shift and go to state 37
+    NOTEQUAL        shift and go to state 40
+
+
+state 20
+
+    (26) INPUTY -> INPUT . LP STR RP
+    (27) INPUTY -> INPUT . LP RP
+
+    LP              shift and go to state 41
+
+
+state 21
+
+    (41) CONDITION -> INPUTY .
+
+    DONOGHTEH       reduce using rule 41 (CONDITION -> INPUTY .)
+
+
+state 22
+
+    (31) VAR -> NUM .
+
+    MUL             reduce using rule 31 (VAR -> NUM .)
+    DIV             reduce using rule 31 (VAR -> NUM .)
+    RP              reduce using rule 31 (VAR -> NUM .)
+    PLUS            reduce using rule 31 (VAR -> NUM .)
+    MINUS           reduce using rule 31 (VAR -> NUM .)
+    DONOGHTEH       reduce using rule 31 (VAR -> NUM .)
+    B               reduce using rule 31 (VAR -> NUM .)
+    K               reduce using rule 31 (VAR -> NUM .)
+    KE              reduce using rule 31 (VAR -> NUM .)
+    BE              reduce using rule 31 (VAR -> NUM .)
+    NOTEQUAL        reduce using rule 31 (VAR -> NUM .)
+    IF              reduce using rule 31 (VAR -> NUM .)
+    WHILE           reduce using rule 31 (VAR -> NUM .)
+    ID              reduce using rule 31 (VAR -> NUM .)
+    PRINT           reduce using rule 31 (VAR -> NUM .)
+    $end            reduce using rule 31 (VAR -> NUM .)
+    RBRAC           reduce using rule 31 (VAR -> NUM .)
+
+
+state 23
+
+    (35) CONDITION -> ID . EQUAL VAR
+    (30) VAR -> ID .
+
+    EQUAL           shift and go to state 42
+    B               reduce using rule 30 (VAR -> ID .)
+    K               reduce using rule 30 (VAR -> ID .)
+    KE              reduce using rule 30 (VAR -> ID .)
+    BE              reduce using rule 30 (VAR -> ID .)
+    NOTEQUAL        reduce using rule 30 (VAR -> ID .)
+
+
+state 24
+
+    (25) PRINTY -> PRINT LP RP .
+
+    IF              reduce using rule 25 (PRINTY -> PRINT LP RP .)
+    WHILE           reduce using rule 25 (PRINTY -> PRINT LP RP .)
+    ID              reduce using rule 25 (PRINTY -> PRINT LP RP .)
+    PRINT           reduce using rule 25 (PRINTY -> PRINT LP RP .)
+    RBRAC           reduce using rule 25 (PRINTY -> PRINT LP RP .)
+    $end            reduce using rule 25 (PRINTY -> PRINT LP RP .)
+
+
+state 25
+
+    (22) PRINTY -> PRINT LP STR . RP
+
+    RP              shift and go to state 43
+
+
+state 26
+
+    (24) PRINTY -> PRINT LP NUM . RP
+
+    RP              shift and go to state 44
+
+
+state 27
+
+    (23) PRINTY -> PRINT LP ID . RP
+
+    RP              shift and go to state 45
+
+
+state 28
+
+    (49) F -> LP . E RP
+    (42) E -> . E PLUS T
+    (43) E -> . E MINUS T
+    (44) E -> . T
+    (45) T -> . T MUL F
+    (46) T -> . T DIV F
+    (47) T -> . F
+    (48) F -> . VAR
+    (49) F -> . LP E RP
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    LP              shift and go to state 28
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    F                              shift and go to state 31
+    E                              shift and go to state 46
+    VAR                            shift and go to state 29
+    T                              shift and go to state 32
+
+state 29
+
+    (48) F -> VAR .
+
+    MUL             reduce using rule 48 (F -> VAR .)
+    DIV             reduce using rule 48 (F -> VAR .)
+    PLUS            reduce using rule 48 (F -> VAR .)
+    MINUS           reduce using rule 48 (F -> VAR .)
+    IF              reduce using rule 48 (F -> VAR .)
+    WHILE           reduce using rule 48 (F -> VAR .)
+    ID              reduce using rule 48 (F -> VAR .)
+    PRINT           reduce using rule 48 (F -> VAR .)
+    $end            reduce using rule 48 (F -> VAR .)
+    RBRAC           reduce using rule 48 (F -> VAR .)
+    RP              reduce using rule 48 (F -> VAR .)
+
+
+state 30
+
+    (33) ASSIGN -> ID EN E .
+    (42) E -> E . PLUS T
+    (43) E -> E . MINUS T
+
+    IF              reduce using rule 33 (ASSIGN -> ID EN E .)
+    WHILE           reduce using rule 33 (ASSIGN -> ID EN E .)
+    ID              reduce using rule 33 (ASSIGN -> ID EN E .)
+    PRINT           reduce using rule 33 (ASSIGN -> ID EN E .)
+    $end            reduce using rule 33 (ASSIGN -> ID EN E .)
+    RBRAC           reduce using rule 33 (ASSIGN -> ID EN E .)
+    PLUS            shift and go to state 47
+    MINUS           shift and go to state 48
+
+
+state 31
+
+    (47) T -> F .
+
+    MUL             reduce using rule 47 (T -> F .)
+    DIV             reduce using rule 47 (T -> F .)
+    PLUS            reduce using rule 47 (T -> F .)
+    MINUS           reduce using rule 47 (T -> F .)
+    IF              reduce using rule 47 (T -> F .)
+    WHILE           reduce using rule 47 (T -> F .)
+    ID              reduce using rule 47 (T -> F .)
+    PRINT           reduce using rule 47 (T -> F .)
+    $end            reduce using rule 47 (T -> F .)
+    RBRAC           reduce using rule 47 (T -> F .)
+    RP              reduce using rule 47 (T -> F .)
+
+
+state 32
+
+    (44) E -> T .
+    (45) T -> T . MUL F
+    (46) T -> T . DIV F
+
+    PLUS            reduce using rule 44 (E -> T .)
+    MINUS           reduce using rule 44 (E -> T .)
+    IF              reduce using rule 44 (E -> T .)
+    WHILE           reduce using rule 44 (E -> T .)
+    ID              reduce using rule 44 (E -> T .)
+    PRINT           reduce using rule 44 (E -> T .)
+    $end            reduce using rule 44 (E -> T .)
+    RBRAC           reduce using rule 44 (E -> T .)
+    RP              reduce using rule 44 (E -> T .)
+    MUL             shift and go to state 50
+    DIV             shift and go to state 49
+
+
+state 33
+
+    (30) VAR -> ID .
+
+    MUL             reduce using rule 30 (VAR -> ID .)
+    DIV             reduce using rule 30 (VAR -> ID .)
+    RP              reduce using rule 30 (VAR -> ID .)
+    PLUS            reduce using rule 30 (VAR -> ID .)
+    MINUS           reduce using rule 30 (VAR -> ID .)
+    DONOGHTEH       reduce using rule 30 (VAR -> ID .)
+    IF              reduce using rule 30 (VAR -> ID .)
+    WHILE           reduce using rule 30 (VAR -> ID .)
+    ID              reduce using rule 30 (VAR -> ID .)
+    PRINT           reduce using rule 30 (VAR -> ID .)
+    $end            reduce using rule 30 (VAR -> ID .)
+    RBRAC           reduce using rule 30 (VAR -> ID .)
+
+
+state 34
+
+    (9) IFY -> IF Xif CONDITION . DONOGHTEH LBRAC S1 RBRAC TF1
+
+    DONOGHTEH       shift and go to state 51
+
+
+state 35
+
+    (28) WHILEY -> WHILE XWhile CONDITION DONOGHTEH . LBRAC S1 RBRAC
+
+    LBRAC           shift and go to state 52
+
+
+state 36
+
+    (37) CONDITION -> VAR K . VAR
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    VAR                            shift and go to state 53
+
+state 37
+
+    (39) CONDITION -> VAR BE . VAR
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    VAR                            shift and go to state 54
+
+state 38
+
+    (38) CONDITION -> VAR KE . VAR
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    VAR                            shift and go to state 55
+
+state 39
+
+    (36) CONDITION -> VAR B . VAR
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    VAR                            shift and go to state 56
+
+state 40
+
+    (40) CONDITION -> VAR NOTEQUAL . VAR
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    VAR                            shift and go to state 57
+
+state 41
+
+    (26) INPUTY -> INPUT LP . STR RP
+    (27) INPUTY -> INPUT LP . RP
+
+    STR             shift and go to state 58
+    RP              shift and go to state 59
+
+
+state 42
+
+    (35) CONDITION -> ID EQUAL . VAR
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    VAR                            shift and go to state 60
+
+state 43
+
+    (22) PRINTY -> PRINT LP STR RP .
+
+    IF              reduce using rule 22 (PRINTY -> PRINT LP STR RP .)
+    WHILE           reduce using rule 22 (PRINTY -> PRINT LP STR RP .)
+    ID              reduce using rule 22 (PRINTY -> PRINT LP STR RP .)
+    PRINT           reduce using rule 22 (PRINTY -> PRINT LP STR RP .)
+    RBRAC           reduce using rule 22 (PRINTY -> PRINT LP STR RP .)
+    $end            reduce using rule 22 (PRINTY -> PRINT LP STR RP .)
+
+
+state 44
+
+    (24) PRINTY -> PRINT LP NUM RP .
+
+    IF              reduce using rule 24 (PRINTY -> PRINT LP NUM RP .)
+    WHILE           reduce using rule 24 (PRINTY -> PRINT LP NUM RP .)
+    ID              reduce using rule 24 (PRINTY -> PRINT LP NUM RP .)
+    PRINT           reduce using rule 24 (PRINTY -> PRINT LP NUM RP .)
+    RBRAC           reduce using rule 24 (PRINTY -> PRINT LP NUM RP .)
+    $end            reduce using rule 24 (PRINTY -> PRINT LP NUM RP .)
+
+
+state 45
+
+    (23) PRINTY -> PRINT LP ID RP .
+
+    IF              reduce using rule 23 (PRINTY -> PRINT LP ID RP .)
+    WHILE           reduce using rule 23 (PRINTY -> PRINT LP ID RP .)
+    ID              reduce using rule 23 (PRINTY -> PRINT LP ID RP .)
+    PRINT           reduce using rule 23 (PRINTY -> PRINT LP ID RP .)
+    RBRAC           reduce using rule 23 (PRINTY -> PRINT LP ID RP .)
+    $end            reduce using rule 23 (PRINTY -> PRINT LP ID RP .)
+
+
+state 46
+
+    (49) F -> LP E . RP
+    (42) E -> E . PLUS T
+    (43) E -> E . MINUS T
+
+    RP              shift and go to state 61
+    PLUS            shift and go to state 47
+    MINUS           shift and go to state 48
+
+
+state 47
+
+    (42) E -> E PLUS . T
+    (45) T -> . T MUL F
+    (46) T -> . T DIV F
+    (47) T -> . F
+    (48) F -> . VAR
+    (49) F -> . LP E RP
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    LP              shift and go to state 28
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    F                              shift and go to state 31
+    VAR                            shift and go to state 29
+    T                              shift and go to state 62
+
+state 48
+
+    (43) E -> E MINUS . T
+    (45) T -> . T MUL F
+    (46) T -> . T DIV F
+    (47) T -> . F
+    (48) F -> . VAR
+    (49) F -> . LP E RP
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    LP              shift and go to state 28
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    F                              shift and go to state 31
+    VAR                            shift and go to state 29
+    T                              shift and go to state 63
+
+state 49
+
+    (46) T -> T DIV . F
+    (48) F -> . VAR
+    (49) F -> . LP E RP
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    LP              shift and go to state 28
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    F                              shift and go to state 64
+    VAR                            shift and go to state 29
+
+state 50
+
+    (45) T -> T MUL . F
+    (48) F -> . VAR
+    (49) F -> . LP E RP
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+
+    LP              shift and go to state 28
+    ID              shift and go to state 33
+    NUM             shift and go to state 22
+
+    F                              shift and go to state 65
+    VAR                            shift and go to state 29
+
+state 51
+
+    (9) IFY -> IF Xif CONDITION DONOGHTEH . LBRAC S1 RBRAC TF1
+
+    LBRAC           shift and go to state 66
+
+
+state 52
+
+    (28) WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC . S1 RBRAC
+    (14) S1 -> . IFY S1
+    (15) S1 -> . IFY
+    (16) S1 -> . WHILEY S1
+    (17) S1 -> . WHILEY
+    (18) S1 -> . ASSIGN S1
+    (19) S1 -> . ASSIGN
+    (20) S1 -> . PRINTY S1
+    (21) S1 -> . PRINTY
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    IFY                            shift and go to state 68
+    PRINTY                         shift and go to state 71
+    ASSIGN                         shift and go to state 67
+    WHILEY                         shift and go to state 69
+    S1                             shift and go to state 70
+
+state 53
+
+    (37) CONDITION -> VAR K VAR .
+
+    DONOGHTEH       reduce using rule 37 (CONDITION -> VAR K VAR .)
+
+
+state 54
+
+    (39) CONDITION -> VAR BE VAR .
+
+    DONOGHTEH       reduce using rule 39 (CONDITION -> VAR BE VAR .)
+
+
+state 55
+
+    (38) CONDITION -> VAR KE VAR .
+
+    DONOGHTEH       reduce using rule 38 (CONDITION -> VAR KE VAR .)
+
+
+state 56
+
+    (36) CONDITION -> VAR B VAR .
+
+    DONOGHTEH       reduce using rule 36 (CONDITION -> VAR B VAR .)
+
+
+state 57
+
+    (40) CONDITION -> VAR NOTEQUAL VAR .
+
+    DONOGHTEH       reduce using rule 40 (CONDITION -> VAR NOTEQUAL VAR .)
+
+
+state 58
+
+    (26) INPUTY -> INPUT LP STR . RP
+
+    RP              shift and go to state 72
+
+
+state 59
+
+    (27) INPUTY -> INPUT LP RP .
+
+    DONOGHTEH       reduce using rule 27 (INPUTY -> INPUT LP RP .)
+
+
+state 60
+
+    (35) CONDITION -> ID EQUAL VAR .
+
+    DONOGHTEH       reduce using rule 35 (CONDITION -> ID EQUAL VAR .)
+
+
+state 61
+
+    (49) F -> LP E RP .
+
+    MUL             reduce using rule 49 (F -> LP E RP .)
+    DIV             reduce using rule 49 (F -> LP E RP .)
+    PLUS            reduce using rule 49 (F -> LP E RP .)
+    MINUS           reduce using rule 49 (F -> LP E RP .)
+    IF              reduce using rule 49 (F -> LP E RP .)
+    WHILE           reduce using rule 49 (F -> LP E RP .)
+    ID              reduce using rule 49 (F -> LP E RP .)
+    PRINT           reduce using rule 49 (F -> LP E RP .)
+    $end            reduce using rule 49 (F -> LP E RP .)
+    RBRAC           reduce using rule 49 (F -> LP E RP .)
+    RP              reduce using rule 49 (F -> LP E RP .)
+
+
+state 62
+
+    (42) E -> E PLUS T .
+    (45) T -> T . MUL F
+    (46) T -> T . DIV F
+
+    PLUS            reduce using rule 42 (E -> E PLUS T .)
+    MINUS           reduce using rule 42 (E -> E PLUS T .)
+    IF              reduce using rule 42 (E -> E PLUS T .)
+    WHILE           reduce using rule 42 (E -> E PLUS T .)
+    ID              reduce using rule 42 (E -> E PLUS T .)
+    PRINT           reduce using rule 42 (E -> E PLUS T .)
+    $end            reduce using rule 42 (E -> E PLUS T .)
+    RBRAC           reduce using rule 42 (E -> E PLUS T .)
+    RP              reduce using rule 42 (E -> E PLUS T .)
+    MUL             shift and go to state 50
+    DIV             shift and go to state 49
+
+
+state 63
+
+    (43) E -> E MINUS T .
+    (45) T -> T . MUL F
+    (46) T -> T . DIV F
+
+    PLUS            reduce using rule 43 (E -> E MINUS T .)
+    MINUS           reduce using rule 43 (E -> E MINUS T .)
+    IF              reduce using rule 43 (E -> E MINUS T .)
+    WHILE           reduce using rule 43 (E -> E MINUS T .)
+    ID              reduce using rule 43 (E -> E MINUS T .)
+    PRINT           reduce using rule 43 (E -> E MINUS T .)
+    $end            reduce using rule 43 (E -> E MINUS T .)
+    RBRAC           reduce using rule 43 (E -> E MINUS T .)
+    RP              reduce using rule 43 (E -> E MINUS T .)
+    MUL             shift and go to state 50
+    DIV             shift and go to state 49
+
+
+state 64
+
+    (46) T -> T DIV F .
+
+    MUL             reduce using rule 46 (T -> T DIV F .)
+    DIV             reduce using rule 46 (T -> T DIV F .)
+    PLUS            reduce using rule 46 (T -> T DIV F .)
+    MINUS           reduce using rule 46 (T -> T DIV F .)
+    IF              reduce using rule 46 (T -> T DIV F .)
+    WHILE           reduce using rule 46 (T -> T DIV F .)
+    ID              reduce using rule 46 (T -> T DIV F .)
+    PRINT           reduce using rule 46 (T -> T DIV F .)
+    $end            reduce using rule 46 (T -> T DIV F .)
+    RBRAC           reduce using rule 46 (T -> T DIV F .)
+    RP              reduce using rule 46 (T -> T DIV F .)
+
+
+state 65
+
+    (45) T -> T MUL F .
+
+    MUL             reduce using rule 45 (T -> T MUL F .)
+    DIV             reduce using rule 45 (T -> T MUL F .)
+    PLUS            reduce using rule 45 (T -> T MUL F .)
+    MINUS           reduce using rule 45 (T -> T MUL F .)
+    IF              reduce using rule 45 (T -> T MUL F .)
+    WHILE           reduce using rule 45 (T -> T MUL F .)
+    ID              reduce using rule 45 (T -> T MUL F .)
+    PRINT           reduce using rule 45 (T -> T MUL F .)
+    $end            reduce using rule 45 (T -> T MUL F .)
+    RBRAC           reduce using rule 45 (T -> T MUL F .)
+    RP              reduce using rule 45 (T -> T MUL F .)
+
+
+state 66
+
+    (9) IFY -> IF Xif CONDITION DONOGHTEH LBRAC . S1 RBRAC TF1
+    (14) S1 -> . IFY S1
+    (15) S1 -> . IFY
+    (16) S1 -> . WHILEY S1
+    (17) S1 -> . WHILEY
+    (18) S1 -> . ASSIGN S1
+    (19) S1 -> . ASSIGN
+    (20) S1 -> . PRINTY S1
+    (21) S1 -> . PRINTY
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 69
+    IFY                            shift and go to state 68
+    PRINTY                         shift and go to state 71
+    ASSIGN                         shift and go to state 67
+    S1                             shift and go to state 73
+
+state 67
+
+    (18) S1 -> ASSIGN . S1
+    (19) S1 -> ASSIGN .
+    (14) S1 -> . IFY S1
+    (15) S1 -> . IFY
+    (16) S1 -> . WHILEY S1
+    (17) S1 -> . WHILEY
+    (18) S1 -> . ASSIGN S1
+    (19) S1 -> . ASSIGN
+    (20) S1 -> . PRINTY S1
+    (21) S1 -> . PRINTY
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    RBRAC           reduce using rule 19 (S1 -> ASSIGN .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 69
+    IFY                            shift and go to state 68
+    PRINTY                         shift and go to state 71
+    ASSIGN                         shift and go to state 67
+    S1                             shift and go to state 74
+
+state 68
+
+    (14) S1 -> IFY . S1
+    (15) S1 -> IFY .
+    (14) S1 -> . IFY S1
+    (15) S1 -> . IFY
+    (16) S1 -> . WHILEY S1
+    (17) S1 -> . WHILEY
+    (18) S1 -> . ASSIGN S1
+    (19) S1 -> . ASSIGN
+    (20) S1 -> . PRINTY S1
+    (21) S1 -> . PRINTY
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    RBRAC           reduce using rule 15 (S1 -> IFY .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 69
+    IFY                            shift and go to state 68
+    PRINTY                         shift and go to state 71
+    ASSIGN                         shift and go to state 67
+    S1                             shift and go to state 75
+
+state 69
+
+    (16) S1 -> WHILEY . S1
+    (17) S1 -> WHILEY .
+    (14) S1 -> . IFY S1
+    (15) S1 -> . IFY
+    (16) S1 -> . WHILEY S1
+    (17) S1 -> . WHILEY
+    (18) S1 -> . ASSIGN S1
+    (19) S1 -> . ASSIGN
+    (20) S1 -> . PRINTY S1
+    (21) S1 -> . PRINTY
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    RBRAC           reduce using rule 17 (S1 -> WHILEY .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 69
+    IFY                            shift and go to state 68
+    PRINTY                         shift and go to state 71
+    ASSIGN                         shift and go to state 67
+    S1                             shift and go to state 76
+
+state 70
+
+    (28) WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 . RBRAC
+
+    RBRAC           shift and go to state 77
+
+
+state 71
+
+    (20) S1 -> PRINTY . S1
+    (21) S1 -> PRINTY .
+    (14) S1 -> . IFY S1
+    (15) S1 -> . IFY
+    (16) S1 -> . WHILEY S1
+    (17) S1 -> . WHILEY
+    (18) S1 -> . ASSIGN S1
+    (19) S1 -> . ASSIGN
+    (20) S1 -> . PRINTY S1
+    (21) S1 -> . PRINTY
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    RBRAC           reduce using rule 21 (S1 -> PRINTY .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 69
+    IFY                            shift and go to state 68
+    PRINTY                         shift and go to state 71
+    ASSIGN                         shift and go to state 67
+    S1                             shift and go to state 78
+
+state 72
+
+    (26) INPUTY -> INPUT LP STR RP .
+
+    DONOGHTEH       reduce using rule 26 (INPUTY -> INPUT LP STR RP .)
+
+
+state 73
+
+    (9) IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 . RBRAC TF1
+
+    RBRAC           shift and go to state 79
+
+
+state 74
+
+    (18) S1 -> ASSIGN S1 .
+
+    RBRAC           reduce using rule 18 (S1 -> ASSIGN S1 .)
+
+
+state 75
+
+    (14) S1 -> IFY S1 .
+
+    RBRAC           reduce using rule 14 (S1 -> IFY S1 .)
+
+
+state 76
+
+    (16) S1 -> WHILEY S1 .
+
+    RBRAC           reduce using rule 16 (S1 -> WHILEY S1 .)
+
+
+state 77
+
+    (28) WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC .
+
+    IF              reduce using rule 28 (WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC .)
+    WHILE           reduce using rule 28 (WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC .)
+    ID              reduce using rule 28 (WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC .)
+    PRINT           reduce using rule 28 (WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC .)
+    $end            reduce using rule 28 (WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC .)
+    RBRAC           reduce using rule 28 (WHILEY -> WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC .)
+
+
+state 78
+
+    (20) S1 -> PRINTY S1 .
+
+    RBRAC           reduce using rule 20 (S1 -> PRINTY S1 .)
+
+
+state 79
+
+    (9) IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC . TF1
+    (10) TF1 -> . ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (11) TF1 -> .
+
+    ELIF            shift and go to state 81
+    IF              reduce using rule 11 (TF1 -> .)
+    WHILE           reduce using rule 11 (TF1 -> .)
+    ID              reduce using rule 11 (TF1 -> .)
+    PRINT           reduce using rule 11 (TF1 -> .)
+    $end            reduce using rule 11 (TF1 -> .)
+    RBRAC           reduce using rule 11 (TF1 -> .)
+
+    TF1                            shift and go to state 80
+
+state 80
+
+    (9) IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .
+
+    IF              reduce using rule 9 (IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    WHILE           reduce using rule 9 (IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    ID              reduce using rule 9 (IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    PRINT           reduce using rule 9 (IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    $end            reduce using rule 9 (IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    RBRAC           reduce using rule 9 (IFY -> IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+
+
+state 81
+
+    (10) TF1 -> ELIF . XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (12) XELIF -> .
+
+    ID              reduce using rule 12 (XELIF -> .)
+    NUM             reduce using rule 12 (XELIF -> .)
+    INPUT           reduce using rule 12 (XELIF -> .)
+
+    XELIF                          shift and go to state 82
+
+state 82
+
+    (10) TF1 -> ELIF XELIF . CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (35) CONDITION -> . ID EQUAL VAR
+    (36) CONDITION -> . VAR B VAR
+    (37) CONDITION -> . VAR K VAR
+    (38) CONDITION -> . VAR KE VAR
+    (39) CONDITION -> . VAR BE VAR
+    (40) CONDITION -> . VAR NOTEQUAL VAR
+    (41) CONDITION -> . INPUTY
+    (30) VAR -> . ID
+    (31) VAR -> . NUM
+    (26) INPUTY -> . INPUT LP STR RP
+    (27) INPUTY -> . INPUT LP RP
+
+    ID              shift and go to state 23
+    NUM             shift and go to state 22
+    INPUT           shift and go to state 20
+
+    CONDITION                      shift and go to state 83
+    INPUTY                         shift and go to state 21
+    VAR                            shift and go to state 19
+
+state 83
+
+    (10) TF1 -> ELIF XELIF CONDITION . DONOGHTEH LBRAC S1 RBRAC TF1
+
+    DONOGHTEH       shift and go to state 84
+
+
+state 84
+
+    (10) TF1 -> ELIF XELIF CONDITION DONOGHTEH . LBRAC S1 RBRAC TF1
+
+    LBRAC           shift and go to state 85
+
+
+state 85
+
+    (10) TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC . S1 RBRAC TF1
+    (14) S1 -> . IFY S1
+    (15) S1 -> . IFY
+    (16) S1 -> . WHILEY S1
+    (17) S1 -> . WHILEY
+    (18) S1 -> . ASSIGN S1
+    (19) S1 -> . ASSIGN
+    (20) S1 -> . PRINTY S1
+    (21) S1 -> . PRINTY
+    (9) IFY -> . IF Xif CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (28) WHILEY -> . WHILE XWhile CONDITION DONOGHTEH LBRAC S1 RBRAC
+    (33) ASSIGN -> . ID EN E
+    (22) PRINTY -> . PRINT LP STR RP
+    (23) PRINTY -> . PRINT LP ID RP
+    (24) PRINTY -> . PRINT LP NUM RP
+    (25) PRINTY -> . PRINT LP RP
+
+    IF              shift and go to state 6
+    WHILE           shift and go to state 1
+    ID              shift and go to state 4
+    PRINT           shift and go to state 3
+
+    WHILEY                         shift and go to state 69
+    IFY                            shift and go to state 68
+    PRINTY                         shift and go to state 71
+    ASSIGN                         shift and go to state 67
+    S1                             shift and go to state 86
+
+state 86
+
+    (10) TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 . RBRAC TF1
+
+    RBRAC           shift and go to state 87
+
+
+state 87
+
+    (10) TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC . TF1
+    (10) TF1 -> . ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1
+    (11) TF1 -> .
+
+    ELIF            shift and go to state 81
+    IF              reduce using rule 11 (TF1 -> .)
+    WHILE           reduce using rule 11 (TF1 -> .)
+    ID              reduce using rule 11 (TF1 -> .)
+    PRINT           reduce using rule 11 (TF1 -> .)
+    $end            reduce using rule 11 (TF1 -> .)
+    RBRAC           reduce using rule 11 (TF1 -> .)
+
+    TF1                            shift and go to state 88
+
+state 88
+
+    (10) TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .
+
+    IF              reduce using rule 10 (TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    WHILE           reduce using rule 10 (TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    ID              reduce using rule 10 (TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    PRINT           reduce using rule 10 (TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    $end            reduce using rule 10 (TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+    RBRAC           reduce using rule 10 (TF1 -> ELIF XELIF CONDITION DONOGHTEH LBRAC S1 RBRAC TF1 .)
+
